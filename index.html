@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  max-height: min-content;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+.slideshow-container .content {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0); 
+  background: rgba(0, 0, 0, 0.5); 
+  color: #f1f1f1; 
+  width: 100%; 
+  padding: 20px; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* code for scroll images */
+div.scroll-container {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+/* adds  */
+.tech-slideshow {
+  height: 200px;
+  max-width: full;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.tech-slideshow > div {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+}
+ .tech-slideshow .mover-1 {
+  animation: moveSlideshow 15s linear infinite running;
+}
+@keyframes moveSlideshow {
+  100% { 
+    transform: translateX(-66.6666%);  
+  }
+} 
+
+.cap{
+  display: flex;
+  justify-content: center;
+  text-decoration: white;
+  color: black;
+  font-size: large;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.cap:hover{
+  text-decoration: white;
+  color: rgb(48, 48, 254);
+}
+    </style>
+</head>
+<body>
+  <!-- navbar  -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="index.html"><img src="images/flight5.jpg" alt="logo" width="40" height="34">CloudCruise</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="container d-flex space">
+            <div class="left">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="flights.html">Flights</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cloudCruise/stories.html">Stories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cloudCruise/contactus.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            <ul class="navbar-nav">
+              <li class="nav-item m-2">
+                <a href="login.html">
+                <button type="button" class="btn btn-primary">Login</button>
+              </a>
+              </li>
+              <li class="nav-item m-2">
+                <a href="signup.html">
+                <button type="button" class="btn btn-primary">SignUp</button></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- scrolls -->
+      <div class="tech-slideshow w-100 d-flex">
+        <div class="mover-1 d-flex">
+          <img src="/cloudCruise/images/scroll5.avif" alt="">
+          <img src="/cloudCruise/images/scroll3.avif" alt="">
+          <img src="/cloudCruise/images/scroll4.avif" alt="">
+          <img src="/cloudCruise/images/scroll1.avif" alt="">
+          <img src="/cloudCruise/images/scroll2.avif" alt="">
+        </div>
+        
+      </div>
+
+      <!-- main search  -->
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8">
+                <form class="d-flex" action="flights.html">
+                    <input class="form-control me-2" type="search"  id="flight" placeholder="Search for flights" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit"><span class="material-symbols-outlined">
+                        search
+                        </span></button>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center p-4">
+            <div class="col-12 col-md-8 col-lg-8">
+                <!-- this is for date -->
+                <div class="btn btn-outline-primary">
+                <input type="date" name="departure" id="depart" class="btn btn-outline-primary" style="border:none;">
+              </div>
+                <!-- this is for flight category -->
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio1">Economy</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">Bussiness</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio3">First Class</label>
+                </div>
+
+                <!-- This is for age category  -->
+                <select class="form-select btn btn-outline-primary m-2 w-25" style="--bs-text-opacity: .5;" aria-label="select example">
+                  <option >Flights</option>
+                  <option value="1" selected>One-Way</option>
+                  <option value="2">Round-trip</option>
+                  <option value="3">Multi-city</option>
+                </select>
+
+                <!-- From and destination -->
+              <div class="input-group">
+                <span class="input-group-text">From</span>
+                <input type="text" aria-label="First name" class="form-control">
+                <span class="input-group-text">Destination</span>
+                <input type="text" aria-label="Last name" class="form-control">
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- info about flights and more  -->
+  <div class="container mt-5">
+    
+
+    <div class="row justify-content-center">
+      <div class="col-14 col-md-10 col-lg-10">
+        <h2>Frequent Flight Routes</h2>
+        <div class="box-container">
+      <div class="card">
+        <img src="images/pune.jpg" alt="" srcset="" height="250">
+        <h5> Mumbai to Pune</h5>
+          <span><b>Flight Time:</b> Approx 1hrs</span>
+          <a href="booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a>
+      </div>
+      <div class="card">
+        <img src="images/chennai.webp" alt="" srcset="" height="250" style="object-fit: fill;">
+        <h5>Bangalore to Chennai</h5>
+        <span><b>Flight Time:</b> Approx 1hrs</span>
+        <a href="booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a>
+      </div>
+      <div class="card">
+        <img src="images/jaipur.jpg" alt="" srcset="" height="250">
+        <h5 style="margin-top: 22px;">Delhi to Jaipur</h5>
+        <span><b>Flight Time:</b> Approx 1hrs</span>
+        <a href="booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a>
+      </div>
+      <div class="card">
+        <img src="images/goa.jpg" alt="" srcset="" height="250">
+        <h5>Mumbai to Goa</h5>
+        <span><b>Flight Time:</b> Approx 1.5hrs</span>
+        <a href="booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a>
+      </div>
+      <div class="card">
+        <img src="images/indore.jpg" alt="" srcset="" height="250">
+        <h5>Mumbai to Indore</h5>
+        <span><b>Flight Time:</b> Approx 1.5hrs</span>
+        <a href="booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a>
+      </div>
+      <div class="card">
+        <img src="images/banglore.jpg" alt="" srcset="" height="250">
+        <h5>Hyderabad to Bangalore</h5>
+        <span><b>Flight Time:</b> Approx 1.5hrs</span>
+        <a href="booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a>
+      </div>
+    </div>
+
+    <!-- Top tourists attraction -->
+    <h2 style="display: flex;justify-content: center; margin-top: 22px;">Top Tourist Attractions</h2>
+    <div class="box-container d-flex">
+      <a href="/cloudCruise/places/topattraction/kashmir.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/kashmir.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Kashmir</p>
+      </div>
+      </a>
+
+      <a href="/cloudCruise/places/topattraction/bali.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/bali-indonesia.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Bali</p>
+      </div>
+    </a>
+
+      <a href="/cloudCruise/places/topattraction/bangalore.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/bangalore.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Bangalore</p>
+      </div>
+    </a>
+
+    <a href="/cloudCruise/places/topattraction/lakshadweep.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/lakshadweep.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Lakshadweep</p>
+      </div>
+    </a>
+    <a href="/cloudCruise/places/topattraction/andaman.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/andaman.png" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Andaman</p>
+      </div>
+    </a>
+
+    <a href="/cloudCruise/places/oindia/paris.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/paris.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Paris</p>
+      </div>
+    </a>
+
+    <a href="/cloudCruise/places/topattraction/jaipur.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/jaipur.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Jaipur</p>
+      </div>
+    </a>
+
+    <a href="/cloudCruise/places/topattraction/leh.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/leh.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Leh</p>
+      </div>
+    </a>
+  
+    <a href="/cloudCruise/places/topattraction/dubai.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/dubai.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Dubai</p>
+      </div>
+    </a>
+
+    <a href="/cloudCruise/places/india/kochi.html" class="cap">
+      <div class="img-rounded">
+        <img src="/cloudCruise/images/kerala.svg" class="img-rounded" width="150" height="150" alt="">
+        <p class="cap">Kerala</p>
+      </div>
+    </div>
+  </a>
+
+    <h2 style="display: flex;justify-content: center; margin-top: 52px;">Our Partners</h2>
+
+
+    <div class="box-container d-flex">
+      <a href="https://www.airindiaexpress.com/home"><img src="/cloudCruise/images/airexp.webp" alt=""></a>
+      <a href="http://www.airindia.in/"><img src="/cloudCruise/images/Airindialg.webp" alt=""></a>
+      <a href="https://www.flydubai.com/"><img src="/cloudCruise/images/flydubailg.webp" alt=""></a>
+      <a href="https://www.goindigo.in/"><img src="/cloudCruise/images/indigolg.webp" alt=""></a>
+      <a href="https://www.airvistara.com/in/en"><img src="/cloudCruise/images/vistaralg.webp" alt=""></a>
+      <a href="https://www.ethiopianairlines.com/"><img src="/cloudCruise/images/ethopian.jpeg" alt="" heigtht="50px"></a>
+      <a href="https://www.qantas.com/"><img src="/cloudCruise/images/quantas.jpeg" alt="" height="150px"></a>
+    </div>
+  </div>
+  </div>
+
+  
+  <div class="slideshow-container">
+    <img src="/cloudCruise/images/flight.jpg" style="width:100%;height: 50%;">
+    <div class="content">
+      <h1>Let Your Dreams Take Flight...</h1>
+    </div>
+    </div>
+    <br>
+    </div>
+
+
+
+
+  </div>
+
+  
+    <div class="container w-100">
+      <footer class="row row-cols-5 py-5 w-100 border-top ">
+        <div class="col">
+          <a href="/" class="d-flex mb-3 link-dark text-decoration-none">
+            <img src="/cloudCruise/images/flight5.jpg" height="150px" alt="">
+          </a>
+          <p class="text-muted">© CloudCruise</p>
+        </div>
+    
+        <!-- <div class="col">
+    
+        </div> -->
+        <div class="m-3 gap-5">
+          
+          <h5 class="d-flex font">Our partners</h5>
+          <div class="d-flex justify-content-around gap-5 ">
+          <ul class="nav d-flex">
+            <li class="nav-item mb-2"><a href="https://www.goindigo.in/" class="nav-link p-0 text-muted">Indigo</a></li>
+            <li class="nav-item mb-2"><a href="https://www.airvistara.com/in/en" class="nav-link p-0 text-muted">Vistara</a></li>
+            <li class="nav-item mb-2"><a href="https://www.qantas.com/" class="nav-link p-0 text-muted">Qantas</a></li>
+            <li class="nav-item mb-2"><a href="http://www.airindia.in/" class="nav-link p-0 text-muted">India</a></li>
+            <li class="nav-item mb-2"><a href="https://www.flydubai.com/" class="nav-link p-0 text-muted"> Fly Dubai</a></li>
+            
+          </ul>
+        
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="https://www.ethiopianairlines.com/aa/book/trip/flight" class="nav-link p-0 text-muted">Eithopian</a></li>
+            <li class="nav-item mb-2"><a href="https://www.lufthansa.com/in" class="nav-link p-0 text-muted">Lufthansa</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Emirates</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Aeroflot</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Qatar Airways</a></li>
+          </ul>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Lufthansa</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Qatar Airways</a></li>
+            <li class="nav-item mb-2"><a href="http://www.airindia.in/" class="nav-link p-0 text-muted">Air India</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Emirates</a></li>
+            <li class="nav-item mb-2"><a href="https://www.flydubai.com/" class="nav-link p-0 text-muted">Fly Dubai</a></li>
+          </ul>
+          <!-- <h5 class="d-flex font">Places</h5> -->
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Dubai</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Paris</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Italy</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Kuwait</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Germany</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Norway</a></li>
+          </ul>
+        
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tokyo</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Australia</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Newyork</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Switzerland</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Seoul</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Kuwait</a></li>
+          </ul>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Abhdhabhi</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Turky</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">France</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Delhi</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Europe</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">New Jersy</a></li>
+          </ul>
+        </div>
+      </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

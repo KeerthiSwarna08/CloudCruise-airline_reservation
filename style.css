@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.search-bar {
+    margin-top: 20px;
+}
+.space{
+  align-items: center;
+  justify-content: space-between;
+}
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    padding: 20px;
+}
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    width: calc(33.333% - 40px); /* 3 cards per row with space between */
+    min-width: 250px; /* Ensures cards don't get too small */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}

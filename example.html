@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Input Data</title>
+</head>
+<body>
+
+<!-- Input form -->
+<form id="dataForm">
+    <label for="inputField">Enter Data:</label>
+    <input type="text" id="inputField" name="inputField">
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Display area for the saved data -->
+<div id="displayArea"></div>
+
+<script>
+// Access the form and display area elements
+const form = document.getElementById('dataForm');
+const displayArea = document.getElementById('displayArea');
+
+// Event listener for form submission
+form.addEventListener('submit', function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    
+    // Get the input value from the form field
+    const inputData = document.getElementById('inputField').value;
+    
+    // Process the input data (e.g., you can perform validation or formatting here)
+    
+    // Save the processed data in another variable or perform further actions
+    const savedData = inputData;
+    
+    // Display the saved data in the display area
+    displayArea.textContent = `Saved Data: ${savedData}`;
+});
+</script>
+
+</body>
+</html>
