@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <table border="1">
+        <tr>
+            <th>EmployeeId</th>
+            <th>EmployeeName</th>
+            <th>EmployeeSalary</th>
+            <th>AirportDesignation</th>
+            <th>AirportDepartment</th>
+            <th>AirplaneDesignation</th>
+        </tr>
+        <% results.forEach(result => { %>
+            <tr>
+                <td><%= result.EmployeeId %></td>
+                <td><%= result.EmployeeName %></td>
+                <td><%= result.EmployeeSalary %></td>
+                <td><%= result.AirportDesignation %></td>
+                <td><%= result.AirportDepartment %></td>
+                <td><%= result.AirplaneDesignation %></td>
+            </tr>
+        <% }) %>
+    </table>
+    <a href="public/staff_details.html">Back to Search</a>
+</body>
+</html>

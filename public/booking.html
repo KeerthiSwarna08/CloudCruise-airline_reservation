@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .space {
+            align-items: center;
+            justify-content: space-between;
+        }
+        .box-container {
+            background-color: #f8f9fa;
+            width: 55%;
+            margin-top: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .font {
+            font-size: x-large;
+            font-weight: 500;
+        }
+        .line {
+            height: 1px;
+            color: aliceblue;
+        }
+        .input-wrapper { 
+            position: relative; 
+            display: inline-block; 
+        } 
+        .input-wrapper input { 
+            padding-right: 40px; 
+        } 
+        .input-wrapper button { 
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            border: none; 
+            background-color: transparent; 
+            cursor: pointer; 
+        } 
+    </style>
+    <script src="javascript/client.js"></script>
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+                updateNavbar(); // Call to update navbar state after loading
+            });
+    </script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <form action="/bill" method="post">
+        <div class="box-container container-md container-fluid ">
+            <div class="name m-3">
+                <label for="nameInput">Name<span style="color: red;"> *</span></label>
+                <input type="text" class="form-control" aria-describedby="input-sizing-default" name="name" id="nameInput" required/>
+            </div>
+            <div class="email m-3">
+                <label for="email">Email<span style="color: red;"> *</span></label>
+                <input type="email" class="form-control" aria-describedby="input-sizing-default" name="email" id="email" required/>
+            </div>
+            
+            <div class="mobileno m-3">
+                <label for="mobileno">Mobileno<span style="color: red;"> *</span></label>
+                <input type="tel" pattern="[0-9]{10}" class="form-control" aria-describedby="input-sizing-default" name="mobileno" id="mobileno" required/>
+            </div>
+            <div class="departure m-3">
+                <label for="departure">From:</label>
+                <input type="text" class="form-control" id="departure" name="departure" aria-describedby="input-sizing-default" readonly>
+            </div>
+            <div class="arrival m-3">
+                <label for="arrival">To:</label>
+                <input type="text" class="form-control" id="arrival" name="arrival" aria-describedby="input-sizing-default" readonly>
+            </div>
+            <div class="airline m-3">
+                <label for="airline">Airline:</label>
+                <input type="text" class="form-control" id="airline" name="airline" aria-describedby="input-sizing-default"><br>
+            </div>
+            <div class="flight-number m-3">
+                <label for="flight-number">Flight Number:</label>
+                <input type="text" class="form-control" id="flight-number" name="flight_number" aria-describedby="input-sizing-default" readonly><br>
+            </div>
+            <div class="departure-time m-3">
+                <label for="departure-time">Departure Time:</label>
+                <input type="text" class="form-control" id="departure-time" name="departure_time" aria-describedby="input-sizing-default" readonly><br>
+            </div>
+            <div class="arrival-time m-3">
+                <label for="arrival-time">Arrival Time:</label>
+                <input type="text" class="form-control" id="arrival-time" name="arrival_time" aria-describedby="input-sizing-default" readonly><br>
+            </div>
+            <div class="d-flex ">
+                <div class="seat m-3 input-wrapper" style="width: 48%;">
+                    <label for="seat">Seat:</label>
+                    <input type="text" class="form-control" id="seat" name="seat" aria-describedby="input-sizing-default" readonly>
+                    <button type="button" onclick="searchSeats()">🔍</button>
+                </div>
+                <div class="gate m-3" style="width: 48%;">
+                    <label for="gate">Gate:</label>
+                    <input type="text" class="form-control" id="gate" name="gate" aria-describedby="input-sizing-default" readonly><br>
+                </div>
+            </div>
+            <div class="price m-3">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" id="price" name="price" aria-describedby="input-sizing-default" readonly><br>
+            </div>
+            <div class="button box w-100">
+                <input type="submit" value="Book Now" class="btn btn-primary w-100 btn-block boon-now">
+            </div>
+        </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const airline = urlParams.get('airline');
+            const flightNumber = urlParams.get('flight_number');
+            const departureTime = urlParams.get('departure_time');
+            const arrivalTime = urlParams.get('arrival_time');
+            const seat = urlParams.get('seat');
+            const price = urlParams.get('price');
+            const arrival = urlParams.get('arrival');
+            const departure = urlParams.get('departure');
+            const gate = urlParams.get('gate');
+
+            document.getElementById('airline').value = airline;
+            document.getElementById('flight-number').value = flightNumber;
+            document.getElementById('departure-time').value = departureTime;
+            document.getElementById('arrival-time').value = arrivalTime;
+            document.getElementById('seat').value = seat;
+            document.getElementById('price').value = price;
+            document.getElementById('departure').value = departure;
+            document.getElementById('arrival').value = arrival;
+            document.getElementById('gate').value = gate;
+        });
+
+        function searchSeats() {
+        const airline = document.getElementById('airline').value;
+        const flightNumber = document.getElementById('flight-number').value;
+        const departureTime = document.getElementById('departure-time').value;
+        const arrivalTime = document.getElementById('arrival-time').value;
+        const seat = document.getElementById('seat').value;
+        const price = document.getElementById('price').value;
+        const departure = document.getElementById('departure').value;
+        const arrival = document.getElementById('arrival').value;
+        const gate = document.getElementById('gate').value;
+
+        const url = `/seat.html?airline=${airline}&flight_number=${flightNumber}&departure_time=${departureTime}&arrival_time=${arrivalTime}&seat=${seat}&price=${price}&departure=${departure}&arrival=${arrival}&gate=${gate}`;
+        window.location.href = url;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights For Agra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <!-- <script>
+      async function fetchData() {
+        try {
+          const response = await fetch('/public/index.html');
+          const result = await response.json();
+          document.getElementById('content').innerText = result.data;
+        } catch (error) {
+          document.getElementById('content').innerText = 'Error loading content';
+        }
+      }
+      fetchData();
+    </script> -->
+</head>
+<body>
+    <!-- navbar  -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="/public/index.html"><img src="/images/flight5.jpg" alt="logo" width="40" height="34">CloudCruise</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="container d-flex space">
+            <div class="left">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/public/flights.html">Flights</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/public/stories.html">Stories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/public/contactus.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            <ul class="navbar-nav">
+              <li class="nav-item m-2">
+                <a href="/public/login.html">
+                <button type="button" class="btn btn-primary">Login</button>
+              </a>
+              </li>
+              <li class="nav-item m-2">
+                <a href="/public/signup.html">
+                <button type="button" class="btn btn-primary">SignUp</button></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <!-- table content  -->
+    <div class=" container container-fluid">
+        <h2><!--<img src="/images/flight5.jpg" alt="" width="150" height="150">-->Flights For Bangalore</h2>
+        <!-- <p>table -table-striped </p> -->
+         <div class="box-container d-flex justify-content-start">
+          <button class="btn" style="border: 2px solid black; border-radius: 8px;"><span id="dateOutput">Hello</span></button>
+          <button class="btn " style="border: 2px solid black; border-radius: 8px;"><span id="dateOutput">Yaar</span></button>
+         </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Airlines</th>
+                    <th>Timings</th>
+                    <th>Price</th>
+                    <th>Book Now</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vistara</td>
+                    <td>08:00 AM - 10:00 AM(2hrs)</td>
+                    <td>72,755 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                </tr>
+                <tr>
+                    <td>Indigo</td>
+                    <td>07:00 AM - 08:30 AM(1.5hrs)</td>
+                    <td>67,755 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                </tr>
+                <tr>
+                    <td>Vistara</td>
+                    <td>02:10 PM - 03:40 PM(1.5hrs)</td>
+                    <td>68,455 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                </tr>
+                <tr>
+                    <td>AirIndia</td>
+                    <td>06:00 AM - 08:00 AM(2hrs)</td>
+                    <td>82,755 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                  </tr>
+                  <tr>
+                    <td>AirIndia</td>
+                    <td>09:00 AM - 11:00 AM(2hrs)</td>
+                    <td>76,575 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                  </tr>
+                  <tr>
+                    <td>Qantas</td>
+                    <td>03:00 AM - 05:10 AM(2hrs)</td>
+                    <td>72,876 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                  </tr>
+                  <tr>
+                    <td>AirIndia</td>
+                    <td>22:45 PM - 01:10 AM(2hrs)</td>
+                    <td>62,755 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                  </tr>
+                  <tr>
+                    <td>Qantas</td>
+                    <td>11:00 AM - 13:00 AM(2hrs)</td>
+                    <td>62,755 INR</td>
+                    <td><a href="/public/booking.html"><button type="button" class="btn btn-primary m-1">Book Now</button></a></td>
+                  </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

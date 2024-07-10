@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<script src="javascript/client.js"></script>
+    <script>
+      fetch('navbar.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('navbar-placeholder').innerHTML = data;
+              updateNavbar(); // Call to update navbar state after loading
+          });
+
+  </script>
+<body>
+<!-- navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="container mt-3">
+        <h2 id="place"></h2>
+        <table class="table table-bordered" class="d-flex justify-content-center items-center" id="heading">
+            <thead>
+                <tr>
+                    <th>Airlines</th>
+                    <th>Flight Number</th>
+                    <th>Departure</th>
+                    <th>arrival</th>
+                    <th>seat</th>
+                    <th>Price</th>
+                    <th>gate</th>
+                    <th>Book Now</th>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const departure=urlParams.get('departure');
+    const arrival = urlParams.get('arrival');
+    const date = urlParams.get('date');
+    const seat = urlParams.get('seat');
+
+    fetch(`/search?departure=${departure}&arrival=${arrival}&date=${date}&seat=${seat}`)
+        .then(response => response.json())
+        .then(data => {
+            const results = document.getElementById('results');
+            const place=document.getElementById('place');
+            place.innerHTML='';
+            results.innerHTML = '';
+            if (data.length === 0) {
+                place.innerHTML = 'No Flights Available';
+                heading.innerHTML='';
+            } else {
+                data.forEach(flight => {
+                  
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                                <td>${flight.airline}</td>
+                                <td>${flight.flight_number}</td>
+                                <td>${flight.departure_date} ${flight.departure_time}</td>
+                                <td>${flight.arrival_date} ${flight.arrival_time}</td>
+                                <td>${flight.seat}</td>
+                                <td>${flight.price}</td>
+                                <td>${flight.gate}</td>
+                                <td><a class='book-now' href="#" style="margin:3px; color:black;text-decoration:none;">Book Now</a></td>
+                    `;
+                    results.appendChild(tr);
+                    
+                });
+                // Add event listeners to the "Book Now" links
+                document.querySelectorAll('.book-now').forEach((link, index) => {
+                            link.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                const row = link.parentNode.parentNode;
+                                const airline = row.children[0].textContent;
+                                const flightNumber = row.children[1].textContent;
+                                const departureTime= row.children[2].textContent;
+                                const arrivalTime = row.children[3].textContent;
+                                const seat = row.children[4].textContent;
+                                const price = row.children[5].textContent;
+                                const gate=row.children[6].textContent
+                                const params = new URLSearchParams({
+                                    airline,
+                                    departure,
+                                    arrival,
+                                    flight_number: flightNumber,
+                                    departure_time: departureTime,
+                                    arrival_time: arrivalTime,
+                                    seat,
+                                    price,
+                                    gate
+                                });
+                                window.location.href = `/public/booking.html?${params.toString()}`;
+                            });
+                        });
+                      }
+                    })
+        .catch(error => {
+            const results = document.getElementById('results');
+            results.innerHTML = '<li class="list-group-item text-danger">Error fetching flight data</li>';
+            console.error('Error fetching flight data:', error);
+        });
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+</head>
+<body>
+    <form action="/add-employee" method="post">
+        <label for="name">Employee Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="salary">Employee Salary:</label>
+        <input type="number" id="salary" name="salary" required><br>
+
+        <label for="type">Employee Type:</label>
+        <select id="type" name="type" required>
+            <option value="airport">Airport Employee</option>
+            <option value="airplane">Airplane Employee</option>
+        </select><br>
+
+        <div id="airport-fields" style="display:block;">
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" name="airportDesignation"><br>
+            <label for="department">Department:</label>
+            <input type="text" id="department" name="airportDepartment"><br>
+        </div>
+
+        <div id="airplane-fields" style="display:none;">
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" name="airplaneDesignation"><br>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('type').addEventListener('change', function () {
+            document.getElementById('airport-fields').style.display = this.value === 'airport' ? 'block' : 'none';
+            document.getElementById('airplane-fields').style.display = this.value === 'airplane' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>

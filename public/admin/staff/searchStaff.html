@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>searchStaff</title>
+</head>
+<body>
+    <h1>Search Employees</h1>
+    <form action="/search-employees" method="post">
+        <label for="search_type">Search By:</label>
+        <select id="search_type" name="search_type" required>
+            <option value="airport_designation">Airport Designation</option>
+            <option value="airport_department">Airport Department</option>
+            <option value="airplane_designation">Airplane Designation</option>
+        </select><br><br>
+
+        <label for="search_value">Search Value:</label>
+        <input type="text" id="search_value" name="search_value" required><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+</body>
+</html>

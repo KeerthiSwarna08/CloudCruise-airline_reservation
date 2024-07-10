@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+</head>
+<body>
+    <h2>Delete Employee</h2>
+    <form id="fetchForm">
+        <label for="fetchEmployeeId">Employee ID:</label>
+        <input type="number" id="fetchEmployeeId" name="employeeId" required>
+        <button type="button" onclick="fetchEmployeeDetails()">Fetch Employee Details</button>
+    </form>
+
+    <form id="deleteForm" action="/delete-employee" method="post" style="display:none;">
+        <input type="hidden" id="deleteEmployeeId" name="employeeId">
+        <p id="employeeDetails"></p>
+        <button type="submit">Delete Employee</button>
+    </form>
+
+    <script>
+        document.getElementById('type').addEventListener('change', function () {
+            document.getElementById('airport-fields').style.display = this.value === 'airport' ? 'block' : 'none';
+            document.getElementById('airplane-fields').style.display = this.value === 'airplane' ? 'block' : 'none';
+        });
+
+        function fetchEmployeeDetails() {
+            const employeeId = document.getElementById('fetchEmployeeId').value;
+            fetch(`/get-employee/${employeeId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        let details = `
+                            Name: ${data.employee.EmployeeName}, 
+                            Salary: ${data.employee.EmployeeSalary}
+                        `;
+
+                        if (data.airportEmployee) {
+                            details += `
+                                , Designation: ${data.airportEmployee.Designation}
+                                , Department: ${data.airportEmployee.Department}
+                            `;
+                        } else if (data.airplaneEmployee) {
+                            details += `
+                                , Designation: ${data.airplaneEmployee.Designation}
+                            `;
+                        }
+
+                        document.getElementById('employeeDetails').textContent = details;
+                        document.getElementById('deleteEmployeeId').value = employeeId;
+                        document.getElementById('deleteForm').style.display = 'block';
+                    } else {
+                        document.getElementById('employeeDetails').textContent = 'Employee not found';
+                        document.getElementById('deleteForm').style.display = 'none';
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #1e90ff;
+        }
+        .seats {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .seat {
+            background-color: #1e90ff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .seat.selected {
+            background-color: #ffa500;
+        }
+        .submit-btn {
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flight Booking</h1>
+    <div class="seats" id="seats">
+        <!-- Seats will be generated here by JavaScript -->
+    </div>
+    <button class="submit-btn" onclick="submitSelection()">Submit</button>
+
+    <script>
+        const seatsContainer = document.getElementById('seats');
+        const totalSeats = 70;
+        const selectedSeats = new Set();
+
+        // Generate seats
+        for (let i = 1; i <= totalSeats; i++) {
+            const seat = document.createElement('div');
+            seat.classList.add('seat');
+            seat.textContent = `S${i}`;
+            seat.addEventListener('click', () => toggleSeat(seat, i));
+            seatsContainer.appendChild(seat);
+        }
+
+        function toggleSeat(seat, seatNumber) {
+            if (selectedSeats.has(seatNumber)) {
+                selectedSeats.delete(seatNumber);
+                seat.classList.remove('selected');
+            } else {
+                selectedSeats.add(seatNumber);
+                seat.classList.add('selected');
+            }
+        }
+
+        function submitSelection() {
+            fetch('/submit-seats', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    seats: Array.from(selectedSeats)
+                })
+            }).then(response => response.json())
+              .then(data => alert(data.message));
+        }
+    </script>
+</body>
+</html>
